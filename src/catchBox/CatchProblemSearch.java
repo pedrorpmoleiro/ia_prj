@@ -1,27 +1,47 @@
 package catchBox;
 
+import agentSearch.Action;
 import agentSearch.Problem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
-    //TODO this class might require the definition of additional methods and/or attributes
+
+    private final S goalState;
+    private List<Action> availableActions;
 
     public CatchProblemSearch(S initialCatchState, Cell goalPosition) {
         super(initialCatchState);
 
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        this.goalState = new S(initialCatchState.getGoalMatrix());
+
+        availableActions.add(new ActionUp());
+        availableActions.add(new ActionDown());
+        availableActions.add(new ActionLeft());
+        availableActions.add(new ActionRight());
     }
 
     @Override
     public List<S> executeActions(S state) {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        List<S> successors = new ArrayList<>(4);
+
+        for (Action action : availableActions) {
+            if (action.isValid(state)) {
+                S successor = (S) state.clone();
+                action.execute(successor);
+                successors.add(successor);
+            }
+        }
+
+        return successors;
     }
 
     public boolean isGoal(S state) {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        return state.equals(this.goalState);
+    }
+
+    public S getGoalState() {
+        return goalState;
     }
 }
