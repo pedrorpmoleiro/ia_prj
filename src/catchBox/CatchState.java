@@ -70,58 +70,70 @@ public class CatchState extends State implements Cloneable {
     }
 
     public boolean canMoveUp() {
-        if (lineCatch == Properties.WALL){
+        if (lineCatch == 0){
+            return false;
+        }
+        if (matrix[lineCatch-1][columnCatch] == Properties.WALL) {
             return false;
         }
 
-        return lineCatch != 0;
+        return true;
     }
 
     public boolean canMoveRight() {
-        if (columnCatch == Properties.WALL){
+
+        if (columnCatch == matrix.length - 1) {
             return false;
         }
-        return columnCatch != matrix.length - 1;
+        if (matrix[lineCatch][columnCatch+1] == Properties.WALL){
+            return false;
+        }
+        return true;
     }
 
     public boolean canMoveDown() {
-       if (lineCatch == Properties.WALL){
+        if (lineCatch == matrix.length - 1) {
+            return false;
+        }
+       if (matrix[lineCatch+1][columnCatch] == Properties.WALL){
            return false;
 
        }
 
-        return lineCatch != matrix.length - 1;
+        return true;
 
     }
 
     public boolean canMoveLeft() {
-        if (columnCatch == Properties.WALL){
+        if (columnCatch == 0) {
+            return false;
+        }
+        if (matrix[lineCatch][columnCatch-1] == Properties.WALL){
             return false;
 
         }
-
-        return columnCatch != 0;
+        return true;
 
     }
 
     public void moveUp() {
-        matrix[lineCatch][columnCatch] = matrix[--lineCatch][columnCatch];
-        matrix[lineCatch][lineCatch] = 1;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch-1][columnCatch];
+        matrix[lineCatch][lineCatch] = Properties.CATCH;
     }
 
     public void moveRight() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch][++columnCatch];
-        matrix[lineCatch][lineCatch] = 1;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch+1];
+        matrix[lineCatch][lineCatch] = Properties.CATCH;
     }
 
     public void moveDown() {
-        matrix[lineCatch][columnCatch] = matrix[++lineCatch][columnCatch];
-        matrix[lineCatch][lineCatch] = 1;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch+1][columnCatch];
+        matrix[lineCatch][lineCatch] = Properties.CATCH;
     }
 
     public void moveLeft() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch][--columnCatch];
-        matrix[lineCatch][lineCatch] = 1;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch-1];
+        matrix[lineCatch][lineCatch] = Properties.CATCH;
     }
 
     public int getNumBox() {
@@ -135,8 +147,16 @@ public class CatchState extends State implements Cloneable {
         }
     return box;
     }
+    public double computeDistance(Cell goalPosition){
+        return Math.abs(goalPosition.getLine() - lineCatch) + Math.abs(goalPosition.getColumn() - columnCatch);
 
+    }
     public void setCellCatch(int line, int column) {
+     this.lineGoal = line;
+     this.columnGoal = column;
+
+     matrix[lineCatch][columnCatch] = Properties.EMPTY; //tira desta posição
+     matrix[line][column] = Properties.CATCH; //passa para esta
 
     }
 
