@@ -15,7 +15,8 @@ public class CatchState extends State implements Cloneable {
 
     private int lineCatch;
     private int columnCatch; //line blank será sem caixa
-
+    private int lineGoal;
+    private int columnGoal;
 
     public CatchState(int[][] matrix) {
       this.matrix = new int[matrix.length][matrix.length];
@@ -145,10 +146,9 @@ public class CatchState extends State implements Cloneable {
 
 
     public void setGoal(int line, int column) {
-        this.lineCatch = line;
-        this.columnCatch = column;
-        //this.lineGoal = lineGoal;
-        //this.columnGoal = columnGoal;
+
+        this.lineGoal = line;
+        this.columnGoal = column;
 
     }
 
