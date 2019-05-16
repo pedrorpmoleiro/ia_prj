@@ -11,12 +11,18 @@ public class CatchState extends State implements Cloneable {
     //TODO this class might require the definition of additional methods and/or attributes
 
     protected int[][] matrix;
+
+
     private int lineCatch;
     private int columnCatch; //line blank será sem caixa
     private int lineGoal;
     private int columnGoal;
 
-    private int[][] goalMatrix;
+    public int getGoalMatrix() {
+        return goalMatrix;
+    }
+
+    private int goalMatrix;
 
 
     public CatchState(int[][] matrix) {
@@ -54,6 +60,13 @@ public class CatchState extends State implements Cloneable {
             }
         }
 
+    }
+    public int getLineCatch() {
+        return lineCatch;
+    }
+
+    public int getColumnCatch() {
+        return columnCatch;
     }
 
     public void executeAction(Action action) {
@@ -139,16 +152,13 @@ public class CatchState extends State implements Cloneable {
         return matrix;
     }
 
-    public int[][] getGoalMatrix() {
-        return goalMatrix;
-    }
+
     public void setGoal(int line, int column) {
-        //TODO
         this.lineCatch = line;
         this.columnCatch = column;
         this.lineGoal = lineGoal;
         this.columnGoal = columnGoal;
-        throw new UnsupportedOperationException("Not Implemented Yet");
+
     }
 
     public int getSteps() {

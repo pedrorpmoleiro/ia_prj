@@ -8,14 +8,14 @@ import java.util.List;
 
 public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
 
-    private final S goalState;
+
     private List<Action> availableActions;
+    private Cell goalPosition;
 
     public CatchProblemSearch(S initialCatchState, Cell goalPosition) {
         super(initialCatchState);
 
-        this.goalState = new S(initialCatchState.getGoalMatrix());
-
+        this.goalPosition = goalPosition;
         availableActions.add(new ActionUp());
         availableActions.add(new ActionDown());
         availableActions.add(new ActionLeft());
@@ -36,12 +36,13 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
 
         return successors;
     }
-
+    public Cell getGoalPosition() {
+        return goalPosition;
+    }
     public boolean isGoal(S state) {
-        return state.equals(this.goalState);
+
+        return state.getLineCatch() == goalPosition.getLine() && state.getColumnCatch() == goalPosition.getColumn();
     }
 
-    public S getGoalState() {
-        return goalState;
-    }
+
 }
