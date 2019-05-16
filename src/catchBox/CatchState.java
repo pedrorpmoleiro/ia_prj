@@ -15,14 +15,6 @@ public class CatchState extends State implements Cloneable {
 
     private int lineCatch;
     private int columnCatch; //line blank será sem caixa
-    private int lineGoal;
-    private int columnGoal;
-
-    public int getGoalMatrix() {
-        return goalMatrix;
-    }
-
-    private int goalMatrix;
 
 
     public CatchState(int[][] matrix) {
@@ -71,10 +63,9 @@ public class CatchState extends State implements Cloneable {
 
     public void executeAction(Action action) {
         action.execute(this);
-        // TODO
         fireUpdatedEnvironment();
 
-        throw new UnsupportedOperationException("Not Implemented Yet"); // delete after implementing
+
     }
 
     public boolean canMoveUp() {
@@ -156,8 +147,8 @@ public class CatchState extends State implements Cloneable {
     public void setGoal(int line, int column) {
         this.lineCatch = line;
         this.columnCatch = column;
-        this.lineGoal = lineGoal;
-        this.columnGoal = columnGoal;
+        //this.lineGoal = lineGoal;
+        //this.columnGoal = columnGoal;
 
     }
 
