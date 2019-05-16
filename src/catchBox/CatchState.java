@@ -16,11 +16,44 @@ public class CatchState extends State implements Cloneable {
     private int lineGoal;
     private int columnGoal;
 
-//    protected int[][] GOAL_MATRIX ={};
+    private int[][] goalMatrix;
+
 
     public CatchState(int[][] matrix) {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+      this.matrix = new int[matrix.length][matrix.length];
+      //this.goalMatrix = new int [matrix.length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                this.matrix[i][j]= matrix[i][j];
+                if(this.matrix[i][j]==0)
+                {
+                    lineCatch=i;
+                    columnCatch=j;
+                }
+                /*
+               switch (this.matrix[i][j])
+               {
+                   case 0:
+                       this.goalMatrix[i][j] = 0;
+                       break;
+                   case 1:
+                       this.goalMatrix[i][j] = 0;
+                       break;
+                   case 2:
+                       this.goalMatrix[i][j] = 0;
+                       break;
+                   case 3:
+                       this.goalMatrix[i][j] = 3;
+                       break;
+                   case 4:
+                       this.goalMatrix[i][j] = 1;
+                       break;
+               }
+*/
+
+            }
+        }
+
     }
 
     public void executeAction(Action action) {
@@ -32,59 +65,83 @@ public class CatchState extends State implements Cloneable {
     }
 
     public boolean canMoveUp() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        if (lineCatch == Properties.WALL){
+            return false;
+        }
+
+        return lineCatch != 0;
     }
 
     public boolean canMoveRight() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        if (columnCatch == Properties.WALL){
+            return false;
+        }
+        return columnCatch != matrix.length - 1;
     }
 
     public boolean canMoveDown() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+       if (lineCatch == Properties.WALL){
+           return false;
+
+       }
+
+        return lineCatch != matrix.length - 1;
+
     }
 
     public boolean canMoveLeft() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        if (columnCatch == Properties.WALL){
+            return false;
+
+        }
+
+        return columnCatch != 0;
+
     }
 
     public void moveUp() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = matrix[--lineCatch][columnCatch];
+        matrix[lineCatch][lineCatch] = 1;
     }
 
     public void moveRight() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = matrix[lineCatch][++columnCatch];
+        matrix[lineCatch][lineCatch] = 1;
     }
 
     public void moveDown() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = matrix[++lineCatch][columnCatch];
+        matrix[lineCatch][lineCatch] = 1;
     }
 
     public void moveLeft() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = matrix[lineCatch][--columnCatch];
+        matrix[lineCatch][lineCatch] = 1;
     }
 
     public int getNumBox() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        int box =0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (this.matrix[i][j] == Properties.BOX){
+                    box++;
+                }
+            }
+        }
+    return box;
     }
 
     public void setCellCatch(int line, int column) {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+
     }
 
     public int[][] getMatrix() {
         return matrix;
     }
 
+    public int[][] getGoalMatrix() {
+        return goalMatrix;
+    }
     public void setGoal(int line, int column) {
         //TODO
         this.lineCatch = line;
