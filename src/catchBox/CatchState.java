@@ -19,41 +19,39 @@ public class CatchState extends State implements Cloneable {
     private int columnGoal;
 
     public CatchState(int[][] matrix) {
-      this.matrix = new int[matrix.length][matrix.length];
-      //this.goalMatrix = new int [matrix.length][matrix.length];
+        this.matrix = new int[matrix.length][matrix.length];
+        //this.goalMatrix = new int [matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                this.matrix[i][j]= matrix[i][j];
-                if(this.matrix[i][j]==0)
-                {
-                    lineCatch=i;
-                    columnCatch=j;
+                this.matrix[i][j] = matrix[i][j];
+                if (this.matrix[i][j] == 0) {
+                    lineCatch = i;
+                    columnCatch = j;
                 }
                 /*
-               switch (this.matrix[i][j])
-               {
-                   case 0:
-                       this.goalMatrix[i][j] = 0;
-                       break;
-                   case 1:
-                       this.goalMatrix[i][j] = 0;
-                       break;
-                   case 2:
-                       this.goalMatrix[i][j] = 0;
-                       break;
-                   case 3:
-                       this.goalMatrix[i][j] = 3;
-                       break;
-                   case 4:
-                       this.goalMatrix[i][j] = 1;
-                       break;
-               }
-*/
-
+                switch (this.matrix[i][j]) {
+                    case 0:
+                        this.goalmatrix[i][j] = 0;
+                        break;
+                    case 1:
+                        this.goalmatrix[i][j] = 0;
+                        break;
+                    case 2:
+                        this.goalmatrix[i][j] = 0;
+                        break;
+                    case 3:
+                        this.goalmatrix[i][j] = 3;
+                        break;
+                    case 4:
+                        this.goalmatrix[i][j] = 1;
+                        break;
+                }
+                */
             }
         }
 
     }
+
     public int getLineCatch() {
         return lineCatch;
     }
@@ -70,10 +68,10 @@ public class CatchState extends State implements Cloneable {
     }
 
     public boolean canMoveUp() {
-        if (lineCatch == 0){
+        if (lineCatch == 0) {
             return false;
         }
-        if (matrix[lineCatch-1][columnCatch] == Properties.WALL) {
+        if (matrix[lineCatch - 1][columnCatch] == Properties.WALL) {
             return false;
         }
 
@@ -85,7 +83,7 @@ public class CatchState extends State implements Cloneable {
         if (columnCatch == matrix.length - 1) {
             return false;
         }
-        if (matrix[lineCatch][columnCatch+1] == Properties.WALL){
+        if (matrix[lineCatch][columnCatch + 1] == Properties.WALL) {
             return false;
         }
         return true;
@@ -95,10 +93,10 @@ public class CatchState extends State implements Cloneable {
         if (lineCatch == matrix.length - 1) {
             return false;
         }
-       if (matrix[lineCatch+1][columnCatch] == Properties.WALL){
-           return false;
+        if (matrix[lineCatch + 1][columnCatch] == Properties.WALL) {
+            return false;
 
-       }
+        }
 
         return true;
 
@@ -108,7 +106,7 @@ public class CatchState extends State implements Cloneable {
         if (columnCatch == 0) {
             return false;
         }
-        if (matrix[lineCatch][columnCatch-1] == Properties.WALL){
+        if (matrix[lineCatch][columnCatch - 1] == Properties.WALL) {
             return false;
 
         }
@@ -117,46 +115,48 @@ public class CatchState extends State implements Cloneable {
     }
 
     public void moveUp() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch-1][columnCatch];
-        matrix[lineCatch][lineCatch] = Properties.CATCH;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch - 1][columnCatch];
+        matrix[--lineCatch][columnCatch] = Properties.CATCH;
     }
 
     public void moveRight() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch+1];
-        matrix[lineCatch][lineCatch] = Properties.CATCH;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch + 1];
+        matrix[lineCatch][++columnCatch] = Properties.CATCH;
     }
 
     public void moveDown() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch+1][columnCatch];
-        matrix[lineCatch][lineCatch] = Properties.CATCH;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch + 1][columnCatch];
+        matrix[++lineCatch][columnCatch] = Properties.CATCH;
     }
 
     public void moveLeft() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch-1];
-        matrix[lineCatch][lineCatch] = Properties.CATCH;
+        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch - 1];
+        matrix[lineCatch][--columnCatch] = Properties.CATCH;
     }
 
     public int getNumBox() {
-        int box =0;
+        int box = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                if (this.matrix[i][j] == Properties.BOX){
+                if (this.matrix[i][j] == Properties.BOX) {
                     box++;
                 }
             }
         }
-    return box;
+        return box;
     }
-    public double computeDistance(Cell goalPosition){
+
+    public double computeDistance(Cell goalPosition) {
         return Math.abs(goalPosition.getLine() - lineCatch) + Math.abs(goalPosition.getColumn() - columnCatch);
 
     }
-    public void setCellCatch(int line, int column) {
-     this.lineGoal = line;
-     this.columnGoal = column;
 
-     matrix[lineCatch][columnCatch] = Properties.EMPTY; //tira desta posição
-     matrix[line][column] = Properties.CATCH; //passa para esta
+    public void setCellCatch(int line, int column) {
+        this.lineGoal = line;
+        this.columnGoal = column;
+
+        matrix[lineCatch][columnCatch] = Properties.EMPTY; //tira desta posição
+        matrix[line][column] = Properties.CATCH; //passa para esta
 
     }
 
@@ -231,8 +231,7 @@ public class CatchState extends State implements Cloneable {
 
     @Override
     public CatchState clone() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        return new CatchState(this.matrix);
     }
 
     //Listeners
