@@ -4,6 +4,7 @@ import agentSearch.Action;
 import agentSearch.Problem;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
@@ -15,7 +16,7 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
     public CatchProblemSearch(S initialCatchState, Cell goalPosition) {
         super(initialCatchState);
 
-        this.goalPosition = goalPosition;
+        availableActions = new LinkedList<Action>();
         availableActions.add(new ActionUp());
         availableActions.add(new ActionDown());
         availableActions.add(new ActionLeft());
@@ -39,6 +40,7 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
     public Cell getGoalPosition() {
         return goalPosition;
     }
+
     public boolean isGoal(S state) {
 
         return state.getLineCatch() == goalPosition.getLine() && state.getColumnCatch() == goalPosition.getColumn();

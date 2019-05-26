@@ -173,8 +173,7 @@ public class CatchState extends State implements Cloneable {
     }
 
     public int getSteps() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        return 0;
     }
 
     public int getSize() {
