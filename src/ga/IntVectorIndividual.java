@@ -1,16 +1,15 @@
 package ga;
 
 public abstract class IntVectorIndividual<P extends Problem, I extends IntVectorIndividual> extends Individual<P, I> {
-    //TODO this class might require the definition of additional methods and/or attributes
-
     protected int[] genome;
 
     public IntVectorIndividual(P problem, int size) {
         super(problem);
         genome = new int[size];
 
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        for (int i = 0; i < genome.length; i++) {
+            // TODO
+        }
       }
 
     public IntVectorIndividual(IntVectorIndividual<P, I> original) {
