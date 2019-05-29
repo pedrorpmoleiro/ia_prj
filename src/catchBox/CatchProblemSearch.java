@@ -16,11 +16,13 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
     public CatchProblemSearch(S initialCatchState, Cell goalPosition) {
         super(initialCatchState);
 
-        availableActions = new LinkedList<Action>();
-        availableActions.add(new ActionUp());
-        availableActions.add(new ActionDown());
-        availableActions.add(new ActionLeft());
-        availableActions.add(new ActionRight());
+        this.availableActions = new LinkedList<Action>();
+        this.availableActions.add(new ActionUp());
+        this.availableActions.add(new ActionDown());
+        this.availableActions.add(new ActionLeft());
+        this.availableActions.add(new ActionRight());
+
+        this.goalPosition = new Cell(initialCatchState.getLineGoal(), initialCatchState.getColumnGoal());
     }
 
     @Override
@@ -43,7 +45,7 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
 
     public boolean isGoal(S state) {
 
-        return state.getLineCatch() == goalPosition.getLine() && state.getColumnCatch() == goalPosition.getColumn();
+        return state.getLineCatch() == state.getLineGoal() && state.getColumnCatch() == state.getColumnGoal();
     }
 
 
