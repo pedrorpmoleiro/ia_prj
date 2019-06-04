@@ -2,14 +2,11 @@ package catchBox;
 
 import agentSearch.Action;
 import agentSearch.Problem;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
-
-
     private List<Action> availableActions;
     private Cell goalPosition;
 
@@ -39,6 +36,7 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
 
         return successors;
     }
+
     public Cell getGoalPosition() {
         return goalPosition;
     }
@@ -47,6 +45,4 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
 
         return state.getLineCatch() == state.getLineDoor() && state.getColumnCatch() == state.getColumnDoor();
     }
-
-
 }

@@ -6,24 +6,23 @@ import agentSearch.State;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CatchState extends State implements Cloneable {
     protected int[][] matrix;
-
-
     private int lineCatch;
     private int columnCatch;
     private int lineDoor;
     private int columnDoor;
-    private List<Cell> boxes;
+    private LinkedList<Cell> boxes;
     private int countBoxes;
 
     public CatchState(int[][] matrix) {
         this.matrix = new int[matrix.length][matrix.length];
 
         this.countBoxes = 0;
-        this.boxes = new ArrayList<>();
+        this.boxes = new LinkedList<>();
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -274,6 +273,4 @@ public class CatchState extends State implements Cloneable {
     public int getCountBoxes() {
         return countBoxes;
     }
-
-
 }
