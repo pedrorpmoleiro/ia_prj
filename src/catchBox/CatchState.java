@@ -15,26 +15,19 @@ public class CatchState extends State implements Cloneable {
     private int columnCatch;
     private int lineDoor;
     private int columnDoor;
-    private LinkedList<Cell> boxes;
-    private int countBoxes;
+    private int countBoxes = 0;
 
     public CatchState(int[][] matrix) {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
-    }
-
-    public CatchState(int[][] matrix, int lineCatch, int columnCatch) {
         this.matrix = new int[matrix.length][matrix.length];
-
-        this.lineCatch = lineCatch;
-        this.columnCatch = columnCatch;
-
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 this.matrix[i][j] = matrix[i][j];
-                if (this.matrix[i][j] == 4) {
-                    lineDoor = i;
-                    columnDoor = j;
+                if (this.matrix[i][j] == Properties.CATCH) {
+                    lineCatch = i;
+                    columnCatch = j;
+                }
+                if (this.matrix[i][j] == Properties.BOX) {
+                    this.countBoxes++;
                 }
             }
         }
@@ -56,43 +49,68 @@ public class CatchState extends State implements Cloneable {
     }
 
     public boolean canMoveUp() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        if (lineCatch <= 0) {
+            return false;
+        }
+        if (matrix[lineCatch - 1][columnCatch] == Properties.WALL) {
+            return false;
+        }
+
+        return true;
     }
 
     public boolean canMoveRight() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        if (columnCatch >= matrix.length - 1) {
+            return false;
+        }
+        if (matrix[lineCatch][columnCatch + 1] == Properties.WALL) {
+            return false;
+        }
+        return true;
     }
 
     public boolean canMoveDown() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        if (lineCatch >= matrix.length - 1) {
+            return false;
+        }
+        if (matrix[lineCatch + 1][columnCatch] == Properties.WALL) {
+            return false;
+        }
+
+        return true;
+
     }
 
     public boolean canMoveLeft() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        if (columnCatch <= 0) {
+            return false;
+        }
+        if (matrix[lineCatch][columnCatch - 1] == Properties.WALL) {
+            return false;
+        }
+        return true;
+
     }
 
+
     public void moveUp() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
+        matrix[--lineCatch][columnCatch] = Properties.CATCH;
     }
 
     public void moveRight() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
+        matrix[lineCatch][++columnCatch] = Properties.CATCH;
     }
 
     public void moveDown() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
+        matrix[++lineCatch][columnCatch] = Properties.CATCH;
     }
 
     public void moveLeft() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
+        matrix[lineCatch][--columnCatch] = Properties.CATCH;
     }
 
     public int getNumBox() {
@@ -200,20 +218,5 @@ public class CatchState extends State implements Cloneable {
             listener.environmentUpdated();
         }
     }
-
-    public int getLineDoor() {
-        return lineDoor;
-    }
-
-    public int getColumnDoor() {
-        return columnDoor;
-    }
-
-    public List<Cell> getBoxes() {
-        return boxes;
-    }
-
-    public int getCountBoxes() {
-        return countBoxes;
-    }
+    
 }
