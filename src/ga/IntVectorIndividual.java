@@ -7,9 +7,24 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
         super(problem);
         genome = new int[size];
 
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
-      }
+        int i = 0;
+        do {
+            int value = GeneticAlgorithm.random.nextInt(size);
+
+            boolean flag = true;
+            for (int i1 : genome) {
+                if (value == i1) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (!flag) {
+                continue;
+            }
+
+            genome[i] = value;
+        } while (i < size);
+    }
 
     public IntVectorIndividual(IntVectorIndividual<P, I> original) {
         super(original);
@@ -22,7 +37,7 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
         return genome.length;
     }
 
-    public int getIndexof(int value){
+    public int getIndexof(int value) {
         for (int i = 0; i < genome.length; i++) {
             if (genome[i] == value)
                 return i;
