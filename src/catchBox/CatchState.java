@@ -2,7 +2,6 @@ package catchBox;
 
 import agentSearch.Action;
 import agentSearch.State;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class CatchState extends State implements Cloneable {
 
     public CatchState(int[][] matrix) {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public CatchState(int[][] matrix, int lineCatch, int columnCatch) {
@@ -53,52 +52,52 @@ public class CatchState extends State implements Cloneable {
         action.execute(this);
         fireUpdatedEnvironment();
 
-        throw new NotImplementedException(); // delete after implementing
+        throw new UnsupportedOperationException("Not Implemented Yet"); // delete after implementing
     }
 
     public boolean canMoveUp() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public boolean canMoveRight() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public boolean canMoveDown() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public boolean canMoveLeft() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public void moveUp() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public void moveRight() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public void moveDown() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public void moveLeft() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public int getNumBox() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public double computeDistance(Cell goalPosition) {
@@ -107,7 +106,7 @@ public class CatchState extends State implements Cloneable {
 
     public void setCellCatch(int line, int column) {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public int[][] getMatrix() {
@@ -117,12 +116,12 @@ public class CatchState extends State implements Cloneable {
 
     public void setGoal(int line, int column) {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public int getSteps() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     public int getSize() {
@@ -180,7 +179,7 @@ public class CatchState extends State implements Cloneable {
     @Override
     public CatchState clone() {
         //TODO
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Not Implemented Yet");
     }
 
     //Listeners
