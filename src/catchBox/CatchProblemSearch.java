@@ -1,6 +1,7 @@
 package catchBox;
 
 import agentSearch.Problem;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -11,17 +12,17 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
         super(initialCatchState);
 
         //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        throw new NotImplementedException();
     }
 
     @Override
     public List<S> executeActions(S state) {
         //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        throw new NotImplementedException();
     }
 
     public boolean isGoal(S state) {
         //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        throw new NotImplementedException();
     }
 }

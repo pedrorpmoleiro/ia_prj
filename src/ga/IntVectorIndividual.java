@@ -1,5 +1,7 @@
 package ga;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public abstract class IntVectorIndividual<P extends Problem, I extends IntVectorIndividual> extends Individual<P, I> {
     //TODO this class might require the definition of additional methods and/or attributes
 
@@ -10,7 +12,7 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
         genome = new int[size];
 
         //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        throw new NotImplementedException();
       }
 
     public IntVectorIndividual(IntVectorIndividual<P, I> original) {

@@ -2,6 +2,7 @@ package ga.geneticOperators;
 
 import ga.IntVectorIndividual;
 import ga.Problem;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Recombination3<I extends IntVectorIndividual, P extends Problem<I>> extends Recombination<I, P> {
 
@@ -19,6 +20,6 @@ public class Recombination3<I extends IntVectorIndividual, P extends Problem<I>>
     @Override
     public String toString(){
         //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        throw new NotImplementedException();
     }    
 }
