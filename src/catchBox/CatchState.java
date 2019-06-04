@@ -131,7 +131,7 @@ public class CatchState extends State implements Cloneable {
     }
 
     public int getNumBox() {
-       return countBoxes;
+        return countBoxes;
     }
 
     public double computeDistance(Cell goalPosition) {
@@ -213,7 +213,10 @@ public class CatchState extends State implements Cloneable {
 
     @Override
     public CatchState clone() {
-        return new CatchState(matrix);
+        CatchState clone = new CatchState(matrix);
+        clone.setCellCatch(lineCatch, columnCatch);
+
+        return clone;
     }
 
     //Listeners
