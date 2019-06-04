@@ -23,6 +23,7 @@ public class CatchState extends State implements Cloneable {
         this.matrix = new int[matrix.length][matrix.length];
 
         this.countBoxes = 0;
+        this.boxes = new ArrayList<>();
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -265,4 +266,14 @@ public class CatchState extends State implements Cloneable {
     public int getColumnDoor() {
         return columnDoor;
     }
+
+    public List<Cell> getBoxes() {
+        return boxes;
+    }
+
+    public int getCountBoxes() {
+        return countBoxes;
+    }
+
+
 }
