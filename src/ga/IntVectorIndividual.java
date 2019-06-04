@@ -23,6 +23,7 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
             }
 
             genome[i] = value;
+            i++;
         } while (i < size);
     }
 
