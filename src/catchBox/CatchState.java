@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CatchState extends State implements Cloneable {
-    //TODO this class might require the definition of additional methods and/or attributes
-
     protected int[][] matrix;
 
 
@@ -111,22 +109,22 @@ public class CatchState extends State implements Cloneable {
     }
 
     public void moveUp() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch - 1][columnCatch];
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
         matrix[--lineCatch][columnCatch] = Properties.CATCH;
     }
 
     public void moveRight() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch + 1];
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
         matrix[lineCatch][++columnCatch] = Properties.CATCH;
     }
 
     public void moveDown() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch + 1][columnCatch];
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
         matrix[++lineCatch][columnCatch] = Properties.CATCH;
     }
 
     public void moveLeft() {
-        matrix[lineCatch][columnCatch] = matrix[lineCatch][columnCatch - 1];
+        matrix[lineCatch][columnCatch] = Properties.EMPTY;
         matrix[lineCatch][--columnCatch] = Properties.CATCH;
     }
 
@@ -144,7 +142,6 @@ public class CatchState extends State implements Cloneable {
 
     public double computeDistance(Cell goalPosition) {
         return Math.abs(goalPosition.getLine() - lineCatch) + Math.abs(goalPosition.getColumn() - columnCatch);
-
     }
 
     public void setCellCatch(int line, int column) {
