@@ -130,8 +130,8 @@ public class CatchState extends State implements Cloneable {
     }
 
     public void setCellCatch(int line, int column) {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        this.columnCatch = column;
+        this.lineCatch = line;
     }
 
     public int[][] getMatrix() {
@@ -147,8 +147,7 @@ public class CatchState extends State implements Cloneable {
     }
 
     public int getSteps() {
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+
     }
 
     public int getSize() {

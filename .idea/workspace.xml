@@ -26,8 +26,8 @@
       <file leaf-file-name="CatchState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/catchBox/CatchState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="208" column="5" lean-forward="true" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
+            <state relative-caret-position="182">
+              <caret line="135" column="0" lean-forward="true" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
               <folding>
                 <element signature="e#1015#1016#0" expanded="true" />
                 <element signature="e#1047#1048#0" expanded="true" />
@@ -39,16 +39,16 @@
                 <element signature="e#1246#1247#0" expanded="true" />
                 <element signature="e#3095#3096#0" expanded="true" />
                 <element signature="e#3127#3128#0" expanded="true" />
-                <element signature="e#3482#3483#0" expanded="true" />
-                <element signature="e#3511#3512#0" expanded="true" />
-                <element signature="e#3783#3784#0" expanded="true" />
-                <element signature="e#3819#3820#0" expanded="true" />
-                <element signature="e#4682#4683#0" expanded="true" />
-                <element signature="e#4746#4747#0" expanded="true" />
-                <element signature="e#5211#5212#0" expanded="true" />
-                <element signature="e#5256#5257#0" expanded="true" />
-                <element signature="e#5596#5597#0" expanded="true" />
-                <element signature="e#5631#5632#0" expanded="true" />
+                <element signature="e#3461#3462#0" expanded="true" />
+                <element signature="e#3490#3491#0" expanded="true" />
+                <element signature="e#3676#3677#0" expanded="true" />
+                <element signature="e#3712#3713#0" expanded="true" />
+                <element signature="e#4575#4576#0" expanded="true" />
+                <element signature="e#4639#4640#0" expanded="true" />
+                <element signature="e#5104#5105#0" expanded="true" />
+                <element signature="e#5149#5150#0" expanded="true" />
+                <element signature="e#5489#5490#0" expanded="true" />
+                <element signature="e#5524#5525#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,7 +67,7 @@
       <file leaf-file-name="CatchProblemSearch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/catchBox/CatchProblemSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
+            <state relative-caret-position="378">
               <caret line="21" column="71" lean-forward="true" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -98,7 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>System.out.</find>
       <find>System.out.ptint</find>
       <find>System.out.ptin</find>
       <find>System.out.pti</find>
@@ -128,6 +127,7 @@
       <find>System.ou</find>
       <find>mana</find>
       <find>getNu</find>
+      <find>set</find>
     </findStrings>
     <replaceStrings>
       <replace>cellCatch</replace>
@@ -513,12 +513,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523534614675</updated>
       <workItem from="1554719190202" duration="2719000" />
-      <workItem from="1559664664136" duration="1372000" />
+      <workItem from="1559664664136" duration="1780000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4091000" />
+    <option name="totallyTimeSpent" value="4499000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -966,7 +966,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/catchBox/CatchProblemSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
+        <state relative-caret-position="378">
           <caret line="21" column="71" lean-forward="true" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -976,8 +976,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/catchBox/CatchState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="208" column="5" lean-forward="true" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
+        <state relative-caret-position="182">
+          <caret line="135" column="0" lean-forward="true" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
           <folding>
             <element signature="e#1015#1016#0" expanded="true" />
             <element signature="e#1047#1048#0" expanded="true" />
@@ -989,16 +989,16 @@
             <element signature="e#1246#1247#0" expanded="true" />
             <element signature="e#3095#3096#0" expanded="true" />
             <element signature="e#3127#3128#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
-            <element signature="e#3511#3512#0" expanded="true" />
-            <element signature="e#3783#3784#0" expanded="true" />
-            <element signature="e#3819#3820#0" expanded="true" />
-            <element signature="e#4682#4683#0" expanded="true" />
-            <element signature="e#4746#4747#0" expanded="true" />
-            <element signature="e#5211#5212#0" expanded="true" />
-            <element signature="e#5256#5257#0" expanded="true" />
-            <element signature="e#5596#5597#0" expanded="true" />
-            <element signature="e#5631#5632#0" expanded="true" />
+            <element signature="e#3461#3462#0" expanded="true" />
+            <element signature="e#3490#3491#0" expanded="true" />
+            <element signature="e#3676#3677#0" expanded="true" />
+            <element signature="e#3712#3713#0" expanded="true" />
+            <element signature="e#4575#4576#0" expanded="true" />
+            <element signature="e#4639#4640#0" expanded="true" />
+            <element signature="e#5104#5105#0" expanded="true" />
+            <element signature="e#5149#5150#0" expanded="true" />
+            <element signature="e#5489#5490#0" expanded="true" />
+            <element signature="e#5524#5525#0" expanded="true" />
           </folding>
         </state>
       </provider>
