@@ -1,12 +1,14 @@
 package catchBox;
 
+import agentSearch.Action;
 import agentSearch.Problem;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
 public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
-    //TODO this class might require the definition of additional methods and/or attributes
+    private List<Action> availableActions;
+    private Cell goalPosition;
 
     public CatchProblemSearch(S initialCatchState, Cell goalPosition) {
         super(initialCatchState);
@@ -19,6 +21,10 @@ public class CatchProblemSearch<S extends CatchState> extends Problem<S> {
     public List<S> executeActions(S state) {
         //TODO
         throw new NotImplementedException();
+    }
+
+    public Cell getGoalPosition() {
+        return goalPosition;
     }
 
     public boolean isGoal(S state) {

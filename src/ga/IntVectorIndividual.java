@@ -3,8 +3,6 @@ package ga;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public abstract class IntVectorIndividual<P extends Problem, I extends IntVectorIndividual> extends Individual<P, I> {
-    //TODO this class might require the definition of additional methods and/or attributes
-
     protected int[] genome;
 
     public IntVectorIndividual(P problem, int size) {

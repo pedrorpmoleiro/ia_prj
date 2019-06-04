@@ -10,11 +10,13 @@ public class CatchIndividual extends IntVectorIndividual<CatchProblemForGA, Catc
     }
 
     public CatchIndividual(CatchIndividual original) {
+
         super(original);
     }
 
     @Override
     public double computeFitness() {
+
         //TODO
         throw new NotImplementedException();
     }

@@ -7,20 +7,50 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class CatchState extends State implements Cloneable {
-    //TODO this class might require the definition of additional methods and/or attributes
-
     protected int[][] matrix;
+    private int lineCatch;
+    private int columnCatch;
+    private int lineDoor;
+    private int columnDoor;
+    private LinkedList<Cell> boxes;
+    private int countBoxes;
 
     public CatchState(int[][] matrix) {
         //TODO
         throw new NotImplementedException();
     }
 
+    public CatchState(int[][] matrix, int lineCatch, int columnCatch) {
+        this.matrix = new int[matrix.length][matrix.length];
+
+        this.lineCatch = lineCatch;
+        this.columnCatch = columnCatch;
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                this.matrix[i][j] = matrix[i][j];
+                if (this.matrix[i][j] == 4) {
+                    lineDoor = i;
+                    columnDoor = j;
+                }
+            }
+        }
+    }
+
+    public int getLineCatch() {
+        return lineCatch;
+    }
+
+    public int getColumnCatch() {
+        return columnCatch;
+    }
+
     public void executeAction(Action action) {
         action.execute(this);
-        // TODO
         fireUpdatedEnvironment();
 
         throw new NotImplementedException(); // delete after implementing
@@ -71,6 +101,10 @@ public class CatchState extends State implements Cloneable {
         throw new NotImplementedException();
     }
 
+    public double computeDistance(Cell goalPosition) {
+        return Math.abs(goalPosition.getLine() - lineCatch) + Math.abs(goalPosition.getColumn() - columnCatch);
+    }
+
     public void setCellCatch(int line, int column) {
         //TODO
         throw new NotImplementedException();
@@ -79,6 +113,7 @@ public class CatchState extends State implements Cloneable {
     public int[][] getMatrix() {
         return matrix;
     }
+
 
     public void setGoal(int line, int column) {
         //TODO
@@ -167,4 +202,19 @@ public class CatchState extends State implements Cloneable {
         }
     }
 
+    public int getLineDoor() {
+        return lineDoor;
+    }
+
+    public int getColumnDoor() {
+        return columnDoor;
+    }
+
+    public List<Cell> getBoxes() {
+        return boxes;
+    }
+
+    public int getCountBoxes() {
+        return countBoxes;
+    }
 }

@@ -6,7 +6,12 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.LinkedList;
 
 public class CatchProblemForGA implements Problem<CatchIndividual> {
-    //TODO this class might require the definition of additional methods and/or attributes
+    public LinkedList<Cell> cellsBoxes;
+    public LinkedList<Pair> pairs;
+    public Cell cellCatch;
+    public Cell door;
+    public int size;
+    public long probls;
 
     public CatchProblemForGA(
             LinkedList<Cell> cellsBoxes,
