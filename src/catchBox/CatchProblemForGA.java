@@ -38,4 +38,8 @@ public class CatchProblemForGA implements Problem<CatchIndividual> {
     public String toString() {
         return "Genetic Algorithm";
     }
+
+    public LinkedList<Pair> getPairs() {
+        return pairs;
+    }
 }
