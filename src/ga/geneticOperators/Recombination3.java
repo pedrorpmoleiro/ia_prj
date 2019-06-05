@@ -20,7 +20,6 @@ public class Recombination3<I extends IntVectorIndividual, P extends Problem<I>>
 
     @Override
     public String toString(){
-        //TODO
-        throw new UnsupportedOperationException("Not Implemented Yet");
+        return "Uniform";
     }    
 }

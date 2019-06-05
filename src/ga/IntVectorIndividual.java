@@ -9,6 +9,7 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
 
         int i = 0;
         boolean zero = false;
+
         do {
             int value = GeneticAlgorithm.random.nextInt(size);
 
