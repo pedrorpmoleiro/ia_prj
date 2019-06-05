@@ -8,18 +8,23 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
         genome = new int[size];
 
         int i = 0;
+        boolean zero = false;
         do {
             int value = GeneticAlgorithm.random.nextInt(size);
 
-            boolean flag = true;
-            for (int i1 : genome) {
-                if (value == i1) {
-                    flag = false;
-                    break;
+            if (value == 0 && !zero) {
+                zero = true;
+            } else {
+                boolean flag = true;
+                for (int i1 : genome) {
+                    if (value == i1) {
+                        flag = false;
+                        break;
+                    }
                 }
-            }
-            if (!flag) {
-                continue;
+                if (!flag) {
+                    continue;
+                }
             }
 
             genome[i] = value;
@@ -29,7 +34,9 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
 
     public IntVectorIndividual(IntVectorIndividual<P, I> original) {
         super(original);
+
         this.genome = new int[original.genome.length];
+
         System.arraycopy(original.genome, 0, genome, 0, genome.length);
     }
 
@@ -43,6 +50,7 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
             if (genome[i] == value)
                 return i;
         }
+
         return -1;
     }
 
