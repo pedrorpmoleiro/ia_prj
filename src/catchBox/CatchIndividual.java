@@ -17,7 +17,7 @@ public class CatchIndividual extends IntVectorIndividual<CatchProblemForGA, Catc
     public double computeFitness() {
         Cell cell1;
         Cell cell2;
-        int fitness = 0;
+        int fitness;
 
         cell1 = problem.cellsBoxes.get(genome[0]);
 
@@ -29,6 +29,7 @@ public class CatchIndividual extends IntVectorIndividual<CatchProblemForGA, Catc
             fitness += getPairDistance(cell1, cell2);
         }
 
+        this.fitness = fitness;
 
         return fitness;
     }
