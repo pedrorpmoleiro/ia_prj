@@ -14,11 +14,11 @@ public class CatchProblemForGA implements Problem<CatchIndividual> {
 
     public CatchProblemForGA(LinkedList<Cell> cellsBoxes, LinkedList<Pair> pairs, Cell cellCatch, Cell door) {
         this.cellsBoxes = new LinkedList<>();
+        this.pairs = new LinkedList<>();
         for (Cell cellsBox : cellsBoxes) {
             this.cellsBoxes.add(cellsBox);
         }
 
-        this.pairs = new LinkedList<>();
         for (Pair pair : pairs) {
             this.pairs.add(pair);
         }
