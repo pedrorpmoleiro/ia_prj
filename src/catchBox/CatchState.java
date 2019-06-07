@@ -32,7 +32,7 @@ public class CatchState extends State implements Cloneable {
                     columnCatch = j;
                 }
                 if (this.matrix[i][j] == Properties.BOX) {
-                    this.countBoxes++;
+                    this.countBoxes++; //numero de caixas
                 }
             }
         }
@@ -58,7 +58,6 @@ public class CatchState extends State implements Cloneable {
         action.execute(this);
         fireUpdatedEnvironment();
 
-        // throw new UnsupportedOperationException("Not Implemented Yet"); // delete after implementing
     }
 
     public boolean canMoveUp() {
@@ -68,8 +67,11 @@ public class CatchState extends State implements Cloneable {
         if (matrix[lineCatch - 1][columnCatch] == Properties.WALL) {
             return false;
         }
-
+        if(matrix[lineCatch - 1][columnCatch] == Properties.DOOR && countBoxes>0){
+            return false;
+        }
         return true;
+
     }
 
     public boolean canMoveRight() {
@@ -77,6 +79,9 @@ public class CatchState extends State implements Cloneable {
             return false;
         }
         if (matrix[lineCatch][columnCatch + 1] == Properties.WALL) {
+            return false;
+        }
+        if(matrix[lineCatch][columnCatch + 1] == Properties.DOOR && countBoxes>0){
             return false;
         }
         return true;
@@ -89,7 +94,9 @@ public class CatchState extends State implements Cloneable {
         if (matrix[lineCatch + 1][columnCatch] == Properties.WALL) {
             return false;
         }
-
+        if(matrix[lineCatch + 1][columnCatch] == Properties.DOOR && countBoxes>0){
+            return false;
+        }
         return true;
 
     }
@@ -101,6 +108,9 @@ public class CatchState extends State implements Cloneable {
         if (matrix[lineCatch][columnCatch - 1] == Properties.WALL) {
             return false;
         }
+        if(matrix[lineCatch][columnCatch - 1] == Properties.DOOR && countBoxes>0){
+            return false;
+        }
         return true;
 
     }
@@ -108,25 +118,38 @@ public class CatchState extends State implements Cloneable {
 
     public void moveUp() {
         matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        matrix[--lineCatch][columnCatch] = Properties.CATCH;
+        if (matrix[--lineCatch][columnCatch] == Properties.BOX) {
+            countBoxes--;
+        }
+        
+        matrix[lineCatch][columnCatch] = Properties.CATCH;
         steps++;
     }
 
     public void moveRight() {
         matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        matrix[lineCatch][++columnCatch] = Properties.CATCH;
+        if (matrix[lineCatch][++columnCatch] == Properties.BOX) {
+            countBoxes--;
+        }
+        matrix[lineCatch][columnCatch] = Properties.CATCH;
         steps++;
     }
 
     public void moveDown() {
         matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        matrix[++lineCatch][columnCatch] = Properties.CATCH;
+        if (matrix[++lineCatch][columnCatch] == Properties.BOX) {
+            countBoxes--;
+        }
+        matrix[lineCatch][columnCatch] = Properties.CATCH;
         steps++;
     }
 
     public void moveLeft() {
         matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        matrix[lineCatch][--columnCatch] = Properties.CATCH;
+        if (matrix[lineCatch][--columnCatch] == Properties.BOX) {
+            countBoxes--;
+        }
+        matrix[lineCatch][columnCatch] = Properties.CATCH;
         steps++;
     }
 
