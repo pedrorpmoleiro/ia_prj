@@ -277,8 +277,6 @@ public class MainFrame extends JFrame implements GAListener {
                             CatchProblemSearch problem = new CatchProblemSearch(state, p.getCell2());
                             Solution s = agentSearch.solveProblem(problem);
                             p.setValue((int) s.getCost());
-
-
                         }
                         problemGA = new CatchProblemForGA(agentSearch.getInitialBox(), pairs, agentSearch.getCellCatch(), agentSearch.getDoor());
 
@@ -326,6 +324,7 @@ public class MainFrame extends JFrame implements GAListener {
                                 cell = (Cell) agentSearch.getInitialBox().get(genome[i] - 1);
                             else
                                 cell = agentSearch.getDoor();
+                            auxState.setGoal(cell.getLine(),cell.getColumn());
                             CatchProblemSearch problem = new CatchProblemSearch(auxState, cell);
                             auxSolution = agentSearch.solveProblem(problem);
 

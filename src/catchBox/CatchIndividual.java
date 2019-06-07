@@ -29,6 +29,8 @@ public class CatchIndividual extends IntVectorIndividual<CatchProblemForGA, Catc
             cell1 = cell2;
         }
 
+        fitness += getPairDistance(cell1, problem.door);
+
         this.fitness = fitness;
 
         return fitness;
