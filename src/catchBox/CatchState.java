@@ -151,8 +151,6 @@ public class CatchState extends State implements Cloneable {
     public void setGoal(int line, int column) {
         this.lineGoal = line;
         this.columnGoal = column;
-
-
     }
 
     public int getSteps() {
@@ -215,6 +213,7 @@ public class CatchState extends State implements Cloneable {
     public CatchState clone() {
         CatchState clone = new CatchState(matrix);
         clone.setCellCatch(lineCatch, columnCatch);
+        clone.setGoal(this.lineGoal, this.columnGoal);
 
         return clone;
     }
