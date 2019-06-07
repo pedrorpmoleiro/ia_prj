@@ -28,8 +28,8 @@ public class CatchState extends State implements Cloneable {
             for (int j = 0; j < matrix.length; j++) {
                 this.matrix[i][j] = matrix[i][j];
                 if (this.matrix[i][j] == Properties.CATCH) {
-                    lineCatch = i;
-                    columnCatch = j;
+                    this.lineCatch = i;
+                    this.columnCatch = j;
                 }
                 if (this.matrix[i][j] == Properties.BOX) {
                     this.countBoxes++;
@@ -58,7 +58,7 @@ public class CatchState extends State implements Cloneable {
         action.execute(this);
         fireUpdatedEnvironment();
 
-        // throw new UnsupportedOperationException("Not Implemented Yet"); // delete after implementing
+        this.action = action;
     }
 
     public boolean canMoveUp() {
@@ -79,6 +79,7 @@ public class CatchState extends State implements Cloneable {
         if (matrix[lineCatch][columnCatch + 1] == Properties.WALL) {
             return false;
         }
+
         return true;
     }
 
@@ -91,7 +92,6 @@ public class CatchState extends State implements Cloneable {
         }
 
         return true;
-
     }
 
     public boolean canMoveLeft() {
@@ -101,10 +101,9 @@ public class CatchState extends State implements Cloneable {
         if (matrix[lineCatch][columnCatch - 1] == Properties.WALL) {
             return false;
         }
+
         return true;
-
     }
-
 
     public void moveUp() {
         matrix[lineCatch][columnCatch] = Properties.EMPTY;

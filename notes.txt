@@ -1,0 +1,9 @@
+Recombination -> Pedro
+Recombination -> Thainá
+Mutation -> fazer
+Implementar mais algoritmos de pesquisa. Outra heuristica
+
+Quando for computar o fitness ter em conta a box.
+
+Ter em conta que não se pode passar por cima da door enquanto houver boxes
+
