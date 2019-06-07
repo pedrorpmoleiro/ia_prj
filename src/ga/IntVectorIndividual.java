@@ -8,28 +8,25 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
         genome = new int[size];
 
         int i = 0;
-        boolean zero = false;
 
         do {
-            int value = GeneticAlgorithm.random.nextInt(size);
+            int value = GeneticAlgorithm.random.nextInt(size) + 1;
 
-            if (value == 0 && !zero) {
-                zero = true;
-            } else {
-                boolean flag = true;
-                for (int i1 : genome) {
-                    if (value == i1) {
-                        flag = false;
-                        break;
-                    }
-                }
-                if (!flag) {
-                    continue;
+            boolean flag = true;
+            for (int i1 : genome) {
+                if (value == i1) {
+                    flag = false;
+                    break;
                 }
             }
+            if (!flag) {
+                continue;
+            }
+
 
             genome[i] = value;
             i++;
+
         } while (i < size);
     }
 

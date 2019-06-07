@@ -19,14 +19,14 @@ public class CatchIndividual extends IntVectorIndividual<CatchProblemForGA, Catc
         Cell cell2;
         int fitness;
 
-        cell1 = problem.cellsBoxes.get(genome[0]);
+        cell1 = problem.cellsBoxes.get(genome[0] - 1);
 
         fitness = getPairDistance(problem.cellCatch, cell1);
 
-        for (int i = 0; i < problem.cellsBoxes.size(); i++) {
-            cell2 = problem.cellsBoxes.get(genome[i]);
+        for (int i = 1; i < problem.cellsBoxes.size(); i++) {
+            cell2 = problem.cellsBoxes.get(genome[i] - 1);
             fitness += getPairDistance(cell1, cell2);
-
+            cell1 = cell2;
         }
 
         this.fitness = fitness;
