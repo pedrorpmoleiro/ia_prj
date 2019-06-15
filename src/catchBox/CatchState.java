@@ -107,7 +107,7 @@ public class CatchState extends State implements Cloneable {
         }
         return true;
 
-        return true;
+
     }
 
     public void moveUp() {
