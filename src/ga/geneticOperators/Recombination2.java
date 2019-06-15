@@ -22,7 +22,13 @@ public class Recombination2<I extends IntVectorIndividual, P extends Problem<I>>
 
         parent1 = new int[ind1.getNumGenes()];
         parent2 = new int[ind2.getNumGenes()];
-        
+
+        for (int i = 0; i < ind1.getNumGenes(); i++) {
+            parent1[i] = ind1.getGene(i);
+        }
+        for (int i = 0; i < ind2.getNumGenes(); i++) {
+            parent2[i] = ind2.getGene(i);
+        }
 
         Integer[] child1 = new Integer[parent1.length];
         Integer[] child2 = new Integer[parent2.length];
