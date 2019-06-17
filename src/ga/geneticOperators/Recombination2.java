@@ -17,7 +17,7 @@ public class Recombination2<I extends IntVectorIndividual, P extends Problem<I>>
 
     @Override
     public void recombine(I ind1, I ind2) {
-        Random r = new Random();
+        Random r = GeneticAlgorithm.random;
         int[] parent1, parent2;
 
         parent1 = new int[ind1.getNumGenes()];
