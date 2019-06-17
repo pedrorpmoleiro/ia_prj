@@ -52,7 +52,7 @@ public class CatchExperimentsFactory extends ExperimentsFactory {
             case "pmx":
                 recombination = new RecombinationPartialMapped<>(recombinationProbability);
                 break;
-            case "TODO1": //TODO
+            case "orderCrossover":
                 recombination = new Recombination3<>(recombinationProbability);
                 break;
             case "onePointCrossover":

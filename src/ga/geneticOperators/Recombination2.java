@@ -43,47 +43,17 @@ public class Recombination2<I extends IntVectorIndividual, P extends Problem<I>>
 
         int randomPoint = r.nextInt(totalBoxes);
 
-        for (int i = 0; i < randomPoint; i++) {
-            child1[i] = parent1[i];
-            child2[i] = parent2[i];
-            boxesInChild1.add(parent1[i]);
-            boxesInChild2.add(parent2[i]);
+        inheritBoxes(parent1, parent2, child1, child2, boxesInChild1, boxesInChild2, randomPoint);
 
-        }
         //get the boxes of the opposite parent if the child does not already contain them
-        for (int i = randomPoint; i < totalBoxes; i++) {
-            if (!boxesInChild1.contains(parent2[i])) {
-                boxesInChild1.add(parent2[i]);
-                child1[i] = parent2[i];
-            }
-            if (!boxesInChild2.contains(parent1[i])) {
-                boxesInChild2.add(parent1[i]);
-                child2[i] = parent1[i];
-            }
-        }
+        getBoxesoppositeParent(parent1, parent2, child1, child2, boxesInChild1, boxesInChild2, randomPoint, totalBoxes);
 
         //Find all the boxes that are still missing from each child
-        for (int i = 0; i < totalBoxes; i++) {
-            if (!boxesInChild1.contains(parent2[i])) {
-                boxesNotInChild1.add(parent2[i]);
-            }
-            if (!boxesInChild2.contains(parent1[i])) {
-                boxesNotInChild2.add(parent1[i]);
-            }
-        }
+        findAllBoxes(parent1, parent2, boxesInChild1, boxesInChild2, boxesNotInChild1, boxesNotInChild2, totalBoxes);
+
         // Find which spots are still empty in each child
-        ArrayList<Integer> emptySpotsBox1 = new ArrayList<>();
-        ArrayList<Integer> emptySpotsBox2 = new ArrayList<>();
+        findEmptySpots(child1, child2, totalBoxes, emptySpotsBox1, emptySpotsBox2);
 
-        for (int i = 0; i < totalBoxes; i++) {
-            if (child1[i] == null) {
-                emptySpotsBox1.add(i);
-            }
-            if (child2[i] == null) {
-                emptySpotsBox2.add(i);
-            }
-
-        }
         // Fill in the empty spots
         for (Integer box : boxesNotInChild1) {
             child1[emptySpotsBox1.remove(0)] = box;
@@ -101,8 +71,11 @@ public class Recombination2<I extends IntVectorIndividual, P extends Problem<I>>
 
     }
 
+
+
+
     @Override
     public String toString() {
-        return "Two Cut";
+        return "OnePointCrossover";
     }
 }
