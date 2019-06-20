@@ -1,4 +1,4 @@
-Runs: 3
+Runs: 10
 
 Population size: 50, 100, 200
 
@@ -24,7 +24,7 @@ Mutation probability: 0.3, 0.4, 0.5
 
 //--------------------------------
 
-Problem file: ./DataSets/puzzle_8.txt
+Problem file: ./DataSets/puzzle_2.txt
 
 //--------------------------------
 
