@@ -1,7 +1,7 @@
 package gui;
 
-import catchBox.CatchIndividual;
-import catchBox.CatchProblemForGA;
+import agentSearch.Heuristic;
+import catchBox.*;
 import ga.geneticOperators.*;
 import ga.selectionMethods.SelectionMethod;
 import ga.selectionMethods.Tournament;
@@ -37,8 +37,8 @@ public class PanelParameters extends PanelAtributesValue {
     JComboBox comboBoxMutationMethods = new JComboBox(mutationMethods);
     JTextField textFieldProbMutation = new JTextField(PROB_MUTATION, TEXT_FIELD_LENGHT);
 
-    String[] methodsSearch = {"A*"};
-    JComboBox comboBoxSearch = new JComboBox(methodsSearch);
+    String[] heuristics = {"Distance", "Population of Boxes"};
+    JComboBox comboBoxHeuristic = new JComboBox(heuristics);
 
     JRadioButton rbElitism = new JRadioButton("", true);
 
@@ -79,9 +79,9 @@ public class PanelParameters extends PanelAtributesValue {
         labels.add(new JLabel("Mutation prob.: "));
         valueComponents.add(textFieldProbMutation);
 
-        labels.add(new JLabel("Search Methods: "));
-        valueComponents.add(comboBoxSearch);
-        comboBoxSearch.addActionListener(new JComboBoxSearch_ActionAdapter(this));
+        labels.add(new JLabel("Heuristic: "));
+        valueComponents.add(comboBoxHeuristic);
+        comboBoxHeuristic.addActionListener(new JComboBoxSearch_ActionAdapter(this));
 
         mainFrame.manageButtons(false, false,false, false, false, false, false, false);
 
@@ -108,9 +108,7 @@ public class PanelParameters extends PanelAtributesValue {
 
 
     public Recombination<CatchIndividual, CatchProblemForGA> getRecombinationMethod() {
-
         double recombinationProb = Double.parseDouble(textFieldProbRecombination.getText());
-
         switch (comboBoxRecombinationMethods.getSelectedIndex()) {
             case 0:
                 return new RecombinationPartialMapped<>(recombinationProb);
@@ -118,6 +116,16 @@ public class PanelParameters extends PanelAtributesValue {
                 return new Recombination3<>(recombinationProb);
             case 2:
                 return new Recombination2<>(recombinationProb);
+        }
+        return null;
+    }
+
+    public Heuristic<CatchProblemSearch, CatchState> getHeuristicMethod() {
+        switch (comboBoxHeuristic.getSelectedIndex()) {
+            case 0:
+                return new HeuristicCatch();
+            case 1:
+                return new HeuristicNumBoxes();
         }
         return null;
     }

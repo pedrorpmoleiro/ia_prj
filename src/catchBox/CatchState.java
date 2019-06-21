@@ -18,10 +18,15 @@ public class CatchState extends State implements Cloneable {
     private int countBoxes;
     private int steps;
 
+    private boolean lastWasDoor;
+    private Cell lastCell;
+
     public CatchState(int[][] matrix) {
         this.matrix = new int[matrix.length][matrix.length];
         this.countBoxes = 0;
         this.steps = 0;
+
+        this.lastWasDoor = false;
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -110,38 +115,43 @@ public class CatchState extends State implements Cloneable {
     }
 
     public void moveUp() {
-        matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        if (matrix[--lineCatch][columnCatch] == Properties.BOX) {
-            countBoxes--;
-        }
+        matrix[lineCatch--][columnCatch] = Properties.EMPTY;
 
-        matrix[lineCatch][columnCatch] = Properties.CATCH;
-        steps++;
+        auxMove();
     }
 
     public void moveRight() {
-        matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        if (matrix[lineCatch][++columnCatch] == Properties.BOX) {
-            countBoxes--;
-        }
-        matrix[lineCatch][columnCatch] = Properties.CATCH;
-        steps++;
+        matrix[lineCatch][columnCatch++] = Properties.EMPTY;
+
+        auxMove();
     }
 
     public void moveDown() {
-        matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        if (matrix[++lineCatch][columnCatch] == Properties.BOX) {
-            countBoxes--;
-        }
-        matrix[lineCatch][columnCatch] = Properties.CATCH;
-        steps++;
+        matrix[lineCatch++][columnCatch] = Properties.EMPTY;
+
+        auxMove();
     }
 
     public void moveLeft() {
-        matrix[lineCatch][columnCatch] = Properties.EMPTY;
-        if (matrix[lineCatch][--columnCatch] == Properties.BOX) {
+        matrix[lineCatch][columnCatch--] = Properties.EMPTY;
+
+        auxMove();
+    }
+
+    private void auxMove() {
+        if (matrix[lineCatch][columnCatch] == Properties.BOX) {
             countBoxes--;
         }
+
+        if (matrix[lineCatch][columnCatch] == Properties.DOOR) {
+            this.lastWasDoor = true;
+            this.lastCell = new Cell(lineCatch, columnCatch);
+
+        } else if (this.lastWasDoor) {
+            matrix[this.lastCell.getLine()][this.lastCell.getColumn()] = Properties.DOOR;
+            this.lastWasDoor = false;
+        }
+
         matrix[lineCatch][columnCatch] = Properties.CATCH;
         steps++;
     }

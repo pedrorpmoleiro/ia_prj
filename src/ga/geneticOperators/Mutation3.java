@@ -21,16 +21,6 @@ public class Mutation3<I extends IntVectorIndividual, P extends Problem<I>> exte
             start = aux;
         }
 
-        /*
-        for (int i = start; i%ind.getNumGenes() != end; i++) {
-            int random = GeneticAlgorithm.random.nextInt(Math.abs(i%ind.getNumGenes() - end));
-
-            int aux = ind.getGene(i%ind.getNumGenes());
-            ind.setGene(i%ind.getNumGenes(), ind.getGene((i + random)%ind.getNumGenes()));
-            ind.setGene((i + random)%ind.getNumGenes(), aux);
-        }
-        */
-
         int i = start;
         while (i <= end) {
             int random = GeneticAlgorithm.random.nextInt(ind.getNumGenes());

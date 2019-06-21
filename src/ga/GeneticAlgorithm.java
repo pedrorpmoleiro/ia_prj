@@ -17,7 +17,7 @@ public class GeneticAlgorithm<I extends Individual, P extends Problem<I>> {
     private final SelectionMethod<I, P> selection;
     private final Recombination<I, P> recombination;
     private final Mutation<I, P> mutation;
-    private int t; //
+    private int t;
     private boolean stopped;
     private I bestInRun;
 

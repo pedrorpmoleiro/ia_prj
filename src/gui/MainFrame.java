@@ -183,7 +183,7 @@ public class MainFrame extends JFrame implements GAListener {
                 File dataSet = fc.getSelectedFile();
                 int[][] matrix = CatchAgentSearch.readInitialStateFromFile(dataSet);
                 state = new CatchState(matrix);
-                agentSearch = new CatchAgentSearch(new CatchState(matrix));
+                agentSearch = new CatchAgentSearch(new CatchState(matrix), getPanelParameters().getHeuristicMethod());
                 problemPanel.textArea.setText(agentSearch.getEnvironment().toString());
                 bestIndividualPanel.textArea.setText("");
                 bestInRun = null;
@@ -237,7 +237,7 @@ public class MainFrame extends JFrame implements GAListener {
 
                 @Override
                 public void done() {
-                    agentSearch = new CatchAgentSearch(state.clone());
+                    agentSearch = new CatchAgentSearch(state.clone(), getPanelParameters().getHeuristicMethod());
                     manageButtons(false, true, false, false, true, true, false, false);
                 }
             };
@@ -419,7 +419,7 @@ public class MainFrame extends JFrame implements GAListener {
             public Void doInBackground() {
                 try {
                     int[][] matrix = CatchAgentSearch.readInitialStateFromFile(new File(experimentsFactory.getFile()));
-                    CatchAgentSearch agentSearch = new CatchAgentSearch(new CatchState(matrix));
+                    CatchAgentSearch agentSearch = new CatchAgentSearch(new CatchState(matrix), getPanelParameters().getHeuristicMethod());
 
                     LinkedList<Pair> pairs = agentSearch.getPairs();
                     for (Pair p : pairs) {

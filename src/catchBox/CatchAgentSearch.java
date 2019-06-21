@@ -1,6 +1,7 @@
 package catchBox;
 
 import agentSearch.Agent;
+import agentSearch.Heuristic;
 import agentSearch.State;
 
 import java.io.File;
@@ -15,11 +16,11 @@ public class CatchAgentSearch<S extends State> extends Agent<S> {
     private static Cell cellCatch;
     private static Cell door;
 
-    public CatchAgentSearch(S environment) {
+    public CatchAgentSearch(S environment, Heuristic<CatchProblemSearch, CatchState> heuristic) {
         super(environment);
-        initialEnvironment = environment;
-        heuristics.add(new HeuristicCatch());
-        heuristic = heuristics.get(0);
+        this.initialEnvironment = environment;
+        this.heuristics.add(heuristic);
+        this.heuristic = heuristics.get(0);
     }
 
     @Override
