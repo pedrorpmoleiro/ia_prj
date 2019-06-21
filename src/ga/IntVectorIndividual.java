@@ -14,6 +14,7 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
 
             boolean flag = true;
             for (int i1 : genome) {
+                //se for repetido o valor, voltar para cima
                 if (value == i1) {
                     flag = false;
                     break;
@@ -22,8 +23,7 @@ public abstract class IntVectorIndividual<P extends Problem, I extends IntVector
             if (!flag) {
                 continue;
             }
-
-
+            //popula genoma com valores random
             genome[i] = value;
             i++;
 

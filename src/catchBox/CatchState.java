@@ -20,7 +20,6 @@ public class CatchState extends State implements Cloneable {
 
     public CatchState(int[][] matrix) {
         this.matrix = new int[matrix.length][matrix.length];
-
         this.countBoxes = 0;
         this.steps = 0;
 
@@ -68,7 +67,7 @@ public class CatchState extends State implements Cloneable {
         if (matrix[lineCatch - 1][columnCatch] == Properties.WALL) {
             return false;
         }
-        if(matrix[lineCatch - 1][columnCatch] == Properties.DOOR && countBoxes>0){
+        if (matrix[lineCatch - 1][columnCatch] == Properties.DOOR && countBoxes > 0) {
             return false;
         }
         return true;
@@ -92,7 +91,7 @@ public class CatchState extends State implements Cloneable {
         if (matrix[lineCatch + 1][columnCatch] == Properties.WALL) {
             return false;
         }
-        if(matrix[lineCatch + 1][columnCatch] == Properties.DOOR && countBoxes>0){
+        if (matrix[lineCatch + 1][columnCatch] == Properties.DOOR && countBoxes > 0) {
             return false;
         }
         return true;
@@ -115,7 +114,7 @@ public class CatchState extends State implements Cloneable {
         if (matrix[--lineCatch][columnCatch] == Properties.BOX) {
             countBoxes--;
         }
-        
+
         matrix[lineCatch][columnCatch] = Properties.CATCH;
         steps++;
     }
@@ -153,6 +152,19 @@ public class CatchState extends State implements Cloneable {
 
     public double computeDistance(Cell goalPosition) {
         return Math.abs(goalPosition.getLine() - lineCatch) + Math.abs(goalPosition.getColumn() - columnCatch);
+    }
+
+    public double computeNumBoxes() {
+        double h = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+
+                if (this.matrix[i][j] == Properties.BOX) {
+                    h++;
+                }
+            }
+        }
+        return h;
     }
 
     public void setCellCatch(int line, int column) {

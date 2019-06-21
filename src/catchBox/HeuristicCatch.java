@@ -6,11 +6,13 @@ public class HeuristicCatch extends Heuristic<CatchProblemSearch, CatchState> {
 
     @Override
     public double compute(CatchState state) {
-       return state.computeDistance(problem.getGoalPosition());
+
+     return state.computeDistance(problem.getGoalPosition());
+     
     }
 
     @Override
     public String toString() {
-       return "Calculation of distance";
+        return "Calculation of distance";
     }
 }
